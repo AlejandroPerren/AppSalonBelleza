@@ -37,3 +37,23 @@ a {
 img {
     max-width: 100%;
 }
+h1, h2, h3 {
+    @apply font-principal font-black text-center;
+    margin: 0 0 2.5rem 0; 
+    color: theme('colors.blanco');
+}
+
+h1 {
+    font-size: 4rem; 
+}
+h2 {
+    font-size: 3.6rem;
+}
+h3 {
+    font-size: 3rem;
+}
+
+p {
+    color: theme('colors.blanco');
+    font-size: 2rem;
+}

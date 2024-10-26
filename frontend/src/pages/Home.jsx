@@ -1,6 +1,7 @@
 import React from 'react'
 import Date from '../components/Date'
 import Resumen from '../components/Resumen'
+import Header from '../components/subcomponents/Header'
 
 const Home = () => {
     return (
@@ -10,19 +11,12 @@ const Home = () => {
             </div>
 
             <div>
-                <header className='items-end flex justify-between mx-8 my-2'>
-                    <h2 className=''>
-                        Hola:Ale
-                    </h2>
-                    <h2 className='font-extrabold cursor-pointer text-5*1'>
-                        Cerrar Sesion
-                    </h2>
-                </header>
+                <Header></Header>
                 <main className='flex justify-center'>
-                    <div className='bg-blue-600 flex mx-4 justify-around text-center'>
-                        <button className='uppercase h-full hover:bg-white hover:text-blue-600'>Servicios</button>
-                        <button className='uppercase hover:bg-white hover:text-blue-600'>Informacion Cita</button>
-                        <button className='uppercase hover:bg-white hover:text-blue-600'>Resumen</button>
+                    <div className='bg-blue-600 flex mx-4 justify-around text-center w-full my-16'>
+                        <button className='uppercase w-full hover:bg-white hover:text-blue-600'>Servicios</button>
+                        <button className='uppercase w-full hover:bg-white hover:text-blue-600'>Informacion Cita</button>
+                        <button className='uppercase w-full hover:bg-white hover:text-blue-600'>Resumen</button>
                     </div>
 
                     <div>

@@ -22,8 +22,8 @@ export default {
         blanco: '#FFFFFF',
         gris: '#e1e1e1',
       },
-      spacing: {
-        separacion: '5rem',
+      gridTemplateColumns: {
+        'customAuth': '1fr 5fr',
       },
       fontWeight: {
         delgada: 300,

@@ -7,9 +7,9 @@ const Header = () => {
                 Hola:Ale
             </h2>
 
-            <h2 className='font-extrabold cursor-pointer text-5*1'>
+            <Link to="/login" className='font-extrabold cursor-pointer text-5*1'>
                 Cerrar Sesion
-            </h2>
+            </Link>
         </header>
     )
 }

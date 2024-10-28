@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Register = () => {
   return (
@@ -8,40 +9,42 @@ const Register = () => {
         <img src="../../public/1.jpg" className='w-full h-full object-cover'/>
     </div>
 
-    <div>
-      <h1>Crear Cuenta</h1>
-      <p>Llena el siguiente formulario para crear una cuenta</p>
+    <div className='mx-6'>
+    <div className='text-center'>
+      <h1 className='font-extrabold mt-36 text-5xl'>Crear Cuenta</h1>
+      <p className='mt-24'>Llena el siguiente formulario para crear una cuenta</p>
+      </div>
       <form>
-        <div className=''>
-        <label htmlFor="Nombre">Nombre</label>
-              <input type="text"/>
-
-              <label htmlFor="Apellido">Apellido</label>
-              <input type="text"/>
-
-              <label htmlFor="email">E-mail</label>
-              <input type="text"/>
-
-              <label htmlFor="cel">Telefono</label>
-              <input type="text"  />
-
-              <label htmlFor="DNI">DNI</label>
-              <input type="text"/>
-
-              <label htmlFor="CUIL">CUIL</label>
-              <input type="text"/>
+      <div className='grid grid-cols-customAuth my-16 gap-6'>
+        
+              <label htmlFor="Contraseña">Nombre</label>
+              <input className='rounded-lg py-2 placeholder:pl-4' type="text" placeholder='Tu Nombre'/>
+              
+              <label htmlFor="Contraseña">Apellido</label>
+              <input className='rounded-lg py-2 placeholder:pl-4' type="text" placeholder='Tu Apellido'/>
+              
+              <label htmlFor="Contraseña">Telefono</label>
+              <input className='rounded-lg py-2 placeholder:pl-4' type="text" placeholder='Tu Telefono'/>
+              
+              <label htmlFor="email">Email</label>
+              <input className='rounded-lg py-2 placeholder:pl-4' type="text" placeholder='Tu Email' />
 
               <label htmlFor="Contraseña">Contraseña</label>
-              <input type="password"/>
-        </div>
-        <button type='submit'>
+              <input className='rounded-lg py-2 placeholder:pl-4' type="password" placeholder='Tu Contraseña'/>
+
+            </div>
+
+
+        <button type='submit' className='bg-azul mt-6 py-4 px-10 font-extrabold  hover:bg-blue-600'>
             Crear Cuenta
           </button>
-        <div>
-          <Link to="forgotPass">¿Olvidaste tu Password?</Link>
-          <Link to="login">Ya tienes una cuenta? Inicia Sesion</Link>
+
+          </form>
+        <div className='flex justify-between my-28'>
+          <Link to="/forgotPass">¿Olvidaste tu Password?</Link>
+          <Link to="/login">Ya tienes una cuenta? Inicia Sesion</Link>
         </div>
-      </form>
+      
     </div>
 </div>
   )

@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/db'); // Asegúrate de importar tu instancia de Sequelize
+const sequelize = require('../config/ConectDB');
 
 class Usuario extends Model {}
 
@@ -11,24 +11,28 @@ Usuario.init({
   },
   nombre: {
     type: DataTypes.STRING(60),
-    allowNull: true,
-  },
-  apellido: {
+    allowNull: false, 
+},
+apellido: {
     type: DataTypes.STRING(60),
-    allowNull: true,
+    allowNull: false, 
+},
+email: {
+  type: DataTypes.STRING(30),
+  allowNull: false,
+  unique: true,
+  validate: {
+      isEmail: true, 
   },
-  email: {
-    type: DataTypes.STRING(30),
-    allowNull: true,
-  },
-  password: {
+},
+password: {
     type: DataTypes.STRING(60),
-    allowNull: true,
-  },
-  telefono: {
+    allowNull: false, 
+},
+telefono: {
     type: DataTypes.STRING(10),
     allowNull: true,
-  },
+},
   admin: {
     type: DataTypes.BOOLEAN,
     allowNull: true,
@@ -38,7 +42,7 @@ Usuario.init({
     allowNull: true,
   },
   token: {
-    type: DataTypes.STRING(15),
+    type: DataTypes.STRING(200),
     allowNull: true,
   },
 }, {

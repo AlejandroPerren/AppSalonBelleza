@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/db');
-const Usuario = require('./Usuario'); // Asegúrate de importar el modelo de Usuario
+const sequelize = require('../config/ConectDB');
+const Usuario = require('./userModel'); 
 
 class Cita extends Model {}
 

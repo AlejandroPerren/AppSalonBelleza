@@ -1,23 +1,21 @@
-const express = require('express')
-const { route } = require('./routes/routes')
-const dotenv = require('dotenv').config()
-const cors = require('cors')
+const express = require('express');
+const dotenv = require('dotenv').config();
+const cors = require('cors');
+const router = require('./routes/routes');
 
-const app = express()
-var corsOptions = {
-    origin: 'http://localhost:5173.com',
-    optionsSuccessStatus: 200 
-  }
+const app = express();
 
-app.use('/api',cors(corsOptions) ,route)
+const corsOptions = {
+  origin: '*', 
+};
 
-PORT = process.env.PORT
-app.listen(PORT, () =>{
-    console.log(`Servidor funcionando en el puerto ${PORT}`)
-})
+app.use(cors(corsOptions));
+app.use(express.json()); 
 
+// Rutas
+app.use('/', router);
 
-
-
-
-
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log(`Servidor funcionando en el puerto ${PORT}`);
+});

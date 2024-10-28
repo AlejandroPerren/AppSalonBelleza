@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/db');
-const Cita = require('./Cita');
-const Servicio = require('./Servicio');
+const sequelize = require('../config/ConectDB');
+const Cita = require('./dateModel');
+const Servicio = require('./servicesModel');
 
 class CitaServicio extends Model {}
 

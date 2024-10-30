@@ -1,2 +1,3 @@
 - error servidor al registrarme✅
-- arreglar Toastify✅
+- arreglar Toastify
+- arreglar redirecciones auth

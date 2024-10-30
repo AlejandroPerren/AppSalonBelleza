@@ -56,7 +56,7 @@ const Login = () => {
           <p className='mt-24'>Inicia sesion con tus datos</p>
         </div>
         <div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className='grid grid-cols-customAuth my-16 gap-6'>
             <label className="self-center" htmlFor="email">Email</label>
             <input className='rounded-lg p-4 focus:outline-none text-black'

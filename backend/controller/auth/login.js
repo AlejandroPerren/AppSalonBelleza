@@ -25,10 +25,10 @@ const Login = async (req, res) => {
         console.log("Validacion de Contraseña: ", checkPass)
 
         if(checkPass){
-        const token = jwt.sign({ id: newUser.id }, process.env.JWT_SECRET, { expiresIn: '4h' });
-        await newUser.update({ token });
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '4h' });
+        await user.update({ token });
         res.status(201).json({
-            message: "Usuario Creado con Éxito",
+            message: "Usuario Ingresado con Éxito",
             token,
         });
         }else{

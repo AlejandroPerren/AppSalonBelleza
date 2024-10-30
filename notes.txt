@@ -1,2 +1,2 @@
-- error servidor al registrarme
-- arreglar Toastify
+- error servidor al registrarme✅
+- arreglar Toastify✅

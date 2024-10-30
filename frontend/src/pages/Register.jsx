@@ -101,27 +101,24 @@ const Register = () => {
               required
             />
 
+
             <label className="self-center" htmlFor="Contraseña">Contraseña</label>
-            <input className='rounded-lg p-4 focus:outline-none text-black'
-              type={showPassword ? "text" : "password"}
-              name='password'
-              placeholder='Tu Contraseña'
-              value={data.password}
-              onChange={handleOnChange}
-              required
-            />
-            <div className='cursor-pointer text-xl' onClick={() => setShowPassword((preve) => !preve)}>
-              <span>
-                {
-                  showPassword ? (
-                    <FaEyeSlash />
-                  )
-                    :
-                    (
-                      <FaEye />
-                    )
-                }
-              </span>
+            <div className="relative">
+              <input
+                className="rounded-lg p-4 focus:outline-none text-black w-full pr-10"
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Tu Contraseña"
+                value={data.password}
+                onChange={handleOnChange}
+                required
+              />
+              <div
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-xl"
+                onClick={() => setShowPassword((prev) => !prev)}
+              >
+                {showPassword ? <FaEyeSlash className='text-black size-8'/> : <FaEye className='text-black size-8'/>}
+              </div>
             </div>
 
           </div>

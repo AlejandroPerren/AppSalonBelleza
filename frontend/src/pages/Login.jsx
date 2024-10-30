@@ -1,7 +1,49 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import SummaryApi from '../common'
+import { toast } from 'react-toastify'
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false)
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  })
+  const navigate = useNavigate()
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target
+
+    setData((preve) => {
+      return {
+        ...preve,
+        [name]: value
+      }
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const dataResponse = await fetch(SummaryApi.Login.url, {
+      method: SummaryApi.Login.method,
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+    const dataApi = await dataResponse.json()
+
+    if (dataApi.success) {
+      toast.success(dataApi.message)
+      navigate("/")
+    }
+    if (dataApi.error) {
+      toast.error(dataApi.message)
+    }
+  }
+
   return (
     <div className='grid grid-cols-2 h-screen'>
       <div className='flex item-center justify-center'>
@@ -14,13 +56,37 @@ const Login = () => {
           <p className='mt-24'>Inicia sesion con tus datos</p>
         </div>
         <div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className='grid grid-cols-customAuth my-16 gap-6'>
-              <label htmlFor="email">Email</label>
-              <input className='rounded-lg py-2 placeholder:pl-4' type="text" placeholder='Tu Email' />
+            <label className="self-center" htmlFor="email">Email</label>
+            <input className='rounded-lg p-4 focus:outline-none text-black'
+              type="text"
+              name='email'
+              placeholder='Tu Email'
+              value={data.email}
+              onChange={handleOnChange}
+              required
+            />
 
-              <label htmlFor="Contraseña">Contraseña</label>
-              <input className='rounded-lg py-2 placeholder:pl-4' type="password" placeholder='Tu Contraseña'/>
+
+            <label className="self-center" htmlFor="Contraseña">Contraseña</label>
+            <div className="relative">
+              <input
+                className="rounded-lg p-4 focus:outline-none text-black w-full pr-10"
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Tu Contraseña"
+                value={data.password}
+                onChange={handleOnChange}
+                required
+              />
+              <div
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-xl"
+                onClick={() => setShowPassword((prev) => !prev)}
+              >
+                {showPassword ? <FaEyeSlash className='text-black size-8'/> : <FaEye className='text-black size-8'/>}
+              </div>
+            </div>
             </div>
             <button type='submit' className='bg-azul mt-6 py-4 px-10 font-extrabold  hover:bg-blue-600'>
               Iniciar Sesión

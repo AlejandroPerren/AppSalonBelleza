@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import SummaryApi from '../common'
-import { toast } from 'react-toastify'
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from 'react-icons/fa'
+import { toast } from 'react-toastify';
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false)
@@ -29,24 +29,28 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    const dataResponse = await fetch(SummaryApi.Register.url, {
-      method: SummaryApi.Register.method,
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(data)
-    })
-    const dataApi = await dataResponse.json()
-
-    if (dataApi.success) {
-      toast.success(dataApi.message)
-      navigate("/")
-    }
-    if (dataApi.error) {
-      toast.error(dataApi.message)
+  
+    try {
+      const dataResponse = await fetch(SummaryApi.Register.url, {
+        method: SummaryApi.Register.method,
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+      const dataApi = await dataResponse.json();
+  
+      if (dataApi.success) {
+        toast.success(dataApi.message);
+        navigate("/");
+      } else {
+        toast.error(dataApi.message);
+      }
+    } catch (error) {
+      toast.error("Error al registrar. Por favor, inténtalo de nuevo.");
     }
   }
+  
 
   return (
 
@@ -63,7 +67,7 @@ const Register = () => {
         <form onSubmit={handleSubmit}>
           <div className='grid grid-cols-customAuth my-16 gap-6'>
 
-            <label className="self-center" htmlFor="Contraseña">Nombre</label>
+            <label className="self-center" htmlFor="nombre">Nombre</label>
             <input className='rounded-lg p-4 focus:outline-none text-black'
               type="text"
               name='nombre'
@@ -73,7 +77,7 @@ const Register = () => {
               onChange={handleOnChange}
             />
 
-            <label className="self-center" htmlFor="Contraseña">Apellido</label>
+            <label className="self-center" htmlFor="apellido">Apellido</label>
             <input className='rounded-lg p-4 focus:outline-none text-black'
               type="text"
               name='apellido'
@@ -82,7 +86,7 @@ const Register = () => {
               onChange={handleOnChange}
             />
 
-            <label className="self-center" htmlFor="Contraseña">Telefono</label>
+            <label className="self-center" htmlFor="telefono">Telefono</label>
             <input className='rounded-lg p-4 focus:outline-none text-black'
               type="text"
               name='telefono'
@@ -93,7 +97,7 @@ const Register = () => {
 
             <label className="self-center" htmlFor="email">Email</label>
             <input className='rounded-lg p-4 focus:outline-none text-black'
-              type="text"
+              type="email"
               name='email'
               placeholder='Tu Email'
               value={data.email}

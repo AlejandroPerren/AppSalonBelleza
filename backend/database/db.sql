@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS citas (
 CREATE TABLE IF NOT EXISTS citasServicios (
   id int NOT NULL AUTO_INCREMENT,
   citaId int DEFAULT NULL,
-  servicioId int DEFAULT NULL,a
+  servicioId int DEFAULT NULL,
   PRIMARY KEY (id),
   KEY citaId_idx (citaId),
   KEY servicioId_idx (servicioId),

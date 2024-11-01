@@ -10,9 +10,9 @@ const sequelize = new Sequelize ('appsalon', 'root', process.env.DB_PASSWORD, {
   (async () => { 
   try {
     await sequelize.authenticate();
-    console.log('Connection has been established successfully.');
+    console.log('Coneccion establecida con exito.');
   } catch (error) {
-    console.error('Unable to connect to the database:', error);
+    console.error('No se encuentra la base de datos:', error);
   }
 })();
 

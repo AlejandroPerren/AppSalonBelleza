@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import SummaryApi from '../common'
-import { toast } from 'react-toastify'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
+import { toast } from 'react-toastify'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
@@ -39,9 +39,11 @@ const Login = () => {
   
       if (dataResponse.ok && dataApi.success) {
         toast.success(dataApi.message);
-        navigate("/");
+        navigate("/home");
+        console.log(dataApi.message)
       } else {
         toast.error(dataApi.message || "Error al iniciar sesión. Por favor, inténtalo de nuevo.");
+        console.log(dataApi.message)
       }
     } catch (error) {
       toast.error("Error al conectarse al servidor.");

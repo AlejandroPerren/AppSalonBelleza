@@ -6,13 +6,13 @@ import { ToastContainer } from 'react-toastify';
 function App() {
 
   return (
-    <div>
-      <RouterProvider router={router}>
-      <ToastContainer 
-      position="top-right"/>
-      </RouterProvider>
-    </div>
-  );
+    
+      <div>
+        <ToastContainer position="top-right" />
+        <RouterProvider router={router} />
+      </div>
+    );
+  
 }
 
 export default App;

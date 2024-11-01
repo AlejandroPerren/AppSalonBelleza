@@ -24,25 +24,30 @@ const Login = () => {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    const dataResponse = await fetch(SummaryApi.Login.url, {
-      method: SummaryApi.Login.method,
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(data)
-    })
-    const dataApi = await dataResponse.json()
-
-    if (dataApi.success) {
-      toast.success(dataApi.message)
-      navigate("/")
+    e.preventDefault();
+  
+    try {
+      const dataResponse = await fetch(SummaryApi.Login.url, {
+        method: SummaryApi.Login.method,
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+  
+      const dataApi = await dataResponse.json();
+  
+      if (dataResponse.ok && dataApi.success) {
+        toast.success(dataApi.message);
+        navigate("/");
+      } else {
+        toast.error(dataApi.message || "Error al iniciar sesión. Por favor, inténtalo de nuevo.");
+      }
+    } catch (error) {
+      toast.error("Error al conectarse al servidor.");
     }
-    if (dataApi.error) {
-      toast.error(dataApi.message)
-    }
-  }
+  };
+  
 
   return (
     <div className='grid grid-cols-2 h-screen'>

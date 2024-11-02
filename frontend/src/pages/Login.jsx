@@ -25,26 +25,29 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-      const dataResponse = await fetch(SummaryApi.Login.url, {
+    try {
+      const response = await fetch(SummaryApi.Login.url, {
         method: SummaryApi.Login.method,
         headers: {
-          "content-type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
-  
-      const dataApi = await dataResponse.json();
-  
-      if (dataApi.success) {
-        toast.success(dataApi.message);
-        navigate("/home");
-        console.log(dataApi.message)
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast.success(result.message);
+        navigate("/");
+        console.log(result.message);
       } else {
-        toast.error( "Error al iniciar sesión. Por favor, inténtalo de nuevo.");
-        console.log(dataApi.message)
-        
+        toast.error("Error al iniciar sesión. Por favor, inténtalo de nuevo.");
+        console.log(result.message);
       }
+    } catch (error) {
+      toast.error("Hubo un problema con el servidor.");
+      console.error("Error:", error);
+    }
   };
 
   console.log("data login",data)

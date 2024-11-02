@@ -13,13 +13,21 @@ const Login = async (req, res) => {
         if (!user) throw new Error("Usuario o contraseña incorrectos");
 
         const checkPass = await bcrypt.compare(password, user.password);
-        if (!checkPass) throw new Error("Usuario o contraseña incorrectos");
+        
+        console.log('CheckPassword', checkPass);
+       
+        if(checkPass){
+            const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '4h' });
+            res.status(201).json({
+                success: true,
+                message: "Usuario ingresado con éxito",
+                token,
+            });
 
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '4h' });
-        res.status(201).json({
-            message: "Usuario ingresado con éxito",
-            token,
-        });
+        }else{
+            throw new Error("Usuario o contraseña incorrectos");
+        }
+       
     } catch (error) {
         console.error(error);
         res.status(500).json({ success: false, message: "Error en el servidor", error });

@@ -16,8 +16,6 @@ const Login = async (req, res) => {
         if (!checkPass) throw new Error("Usuario o contraseña incorrectos");
 
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '4h' });
-        await user.update({ token });
-
         res.status(201).json({
             message: "Usuario ingresado con éxito",
             token,

@@ -7,7 +7,8 @@ const getServices = async(req, res)=>{
 
         res.status(201).json({
             message :"Lista de Servicios:",
-            listServices
+            success: true,
+            data: listServices
         })
     }catch(error){
         console.error(error);
@@ -15,4 +16,4 @@ const getServices = async(req, res)=>{
     }
 }
 
-module.exports = {getServices}
+module.exports = {getServices} 

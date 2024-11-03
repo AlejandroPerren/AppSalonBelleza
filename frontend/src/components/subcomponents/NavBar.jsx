@@ -1,25 +1,50 @@
 import React from 'react';
 
-const NavBar = () => {
-    const isAdmin = true;
+const NavBar = ({ setActiveSection }) => {
+    const isAdmin = true; // Simulando si es admin o no
+    const buttonClass = 'uppercase w-full p-4 transition-colors duration-300';
 
     return (
         <div>
             {isAdmin ? (
-                 <div className=' flex mx-4 justify-between my-16'>
-                 <button className='bg-blue-600 uppercase w-full p-4 hover:bg-white hover:text-blue-600'>Citas</button>
-                 <button className='bg-blue-600 uppercase w-full p-4 hover:bg-white hover:text-blue-600'>Nuestros Servicios</button>
-             </div>
+                <div className='flex mx-4 justify-between my-16'>
+                    <button
+                        className={`${buttonClass} ${activeSection === 'citas' ? 'bg-white text-cyan-600' : 'bg-cyan-600 hover:bg-white hover:text-cyan-600'}`}
+                        onClick={() => setActiveSection('citas')}
+                    >
+                        Citas
+                    </button>
+                    <button
+                        className={`${buttonClass} ${activeSection === 'servicios' ? 'bg-white text-cyan-600' : 'bg-cyan-600 hover:bg-white hover:text-cyan-600'}`}
+                        onClick={() => setActiveSection('servicios')}
+                    >
+                        Nuestros Servicios
+                    </button>
+                </div>
             ) : (
-              
-                 <div className='bg-blue-600 flex mx-4 justify-around text-center w-full my-16'>
-                 <button className='uppercase w-full p-4 hover:bg-white hover:text-blue-600'>Servicios</button>
-                 <button className='uppercase w-full p-4 hover:bg-white hover:text-blue-600'>Informacion Cita</button>
-                 <button className='uppercase w-full p-4 hover:bg-white hover:text-blue-600'>Resumen</button>
-             </div>
+                <div className='bg-cyan-600 flex mx-4 justify-around text-center w-full my-16'>
+                    <button
+                        className={`${buttonClass} ${activeSection === 'servicios' ? 'bg-white text-cyan-600' : 'hover:bg-white hover:text-cyan-600'}`}
+                        onClick={() => setActiveSection('servicios')}
+                    >
+                        Servicios
+                    </button>
+                    <button
+                        className={`${buttonClass} ${activeSection === 'informacion' ? 'bg-white text-cyan-600' : 'hover:bg-white hover:text-cyan-600'}`}
+                        onClick={() => setActiveSection('informacion')}
+                    >
+                        Información Cita
+                    </button>
+                    <button
+                        className={`${buttonClass} ${activeSection === 'resumen' ? 'bg-white text-cyan-600' : 'hover:bg-white hover:text-cyan-600'}`}
+                        onClick={() => setActiveSection('resumen')}
+                    >
+                        Resumen
+                    </button>
+                </div>
             )}
         </div>
     );
-}
+};
 
 export default NavBar;

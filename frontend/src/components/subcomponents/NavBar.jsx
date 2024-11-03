@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { GeneralContext } from '../../context/generalContext';
 
-const NavBar = ({ setActiveSection }) => {
-    const isAdmin = true; // Simulando si es admin o no
+const NavBar = () => {
+    const { activeSection, setActiveSection } = useContext(GeneralContext);
+    const isAdmin = false; 
     const buttonClass = 'uppercase w-full p-4 transition-colors duration-300';
 
     return (

@@ -1,27 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Header from '../components/subcomponents/Header';
 import NavBar from '../components/subcomponents/NavBar';
 import Services from '../components/Services';
+import { GeneralContext } from '../context/generalContext'; 
 
 const Home = () => {
-    const [activeSection, setActiveSection] = useState('');
+    const { activeSection } = useContext(GeneralContext);
 
     const renderComponent = () => {
         switch (activeSection) {
             case 'citas':
-                return (
-                    <h1>Hola</h1>
-                )
-            case 'cita':
-                    return (
-                        <h1>Hola</h1>
-                    )
-            case 'resumen':
-                return (
-                    <h1>Hola</h1>
-                )
-            case 'services':
+                return <h1>Hola</h1>;
+            case 'servicios':
                 return <Services />;
+            case 'resumen':
+                return <h1>Hola</h1>;
             default:
                 return null;
         }
@@ -32,12 +25,10 @@ const Home = () => {
             <div className='flex items-center justify-center'>
                 <img src="../../public/1.jpg" className='w-full h-full object-cover' alt="Background" />
             </div>
-
             <div>
                 <Header />
                 <main className='flex justify-center flex-col text-center'>
-                    <NavBar setActiveSection={setActiveSection} />
-
+                    <NavBar />
                     <div>
                         {renderComponent()}
                     </div>
@@ -45,6 +36,6 @@ const Home = () => {
             </div>
         </div>
     );
-}
+};
 
 export default Home;

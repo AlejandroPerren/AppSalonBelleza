@@ -3,6 +3,7 @@ import Date from '../components/Date'
 import Resumen from '../components/Resumen'
 import Header from '../components/subcomponents/Header'
 import NavBar from '../components/subcomponents/NavBar'
+import Services from '../components/Services'
 
 const Home = () => {
     
@@ -16,7 +17,7 @@ const Home = () => {
                 <Header></Header>
                 <main className='flex justify-center'>
                   <NavBar/>
-
+                    <Services/>
                     <div>
                      
                     </div>

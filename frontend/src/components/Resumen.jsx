@@ -2,7 +2,8 @@ import React from 'react'
 
 const Resumen = () => {
   return (
-    <div>hola
+    <div>
+      <h2>Resumen de Servicios</h2>
     </div>
   )
 }

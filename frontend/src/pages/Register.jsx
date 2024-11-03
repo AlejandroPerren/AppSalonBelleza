@@ -15,7 +15,6 @@ const Register = () => {
     password: "",
   })
   const navigate = useNavigate()
-
   const handleOnChange = (e) => {
     const { name, value } = e.target
 

@@ -8,7 +8,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [data, setData] = useState({
     email: "",
-    password: "",
+    password: ""
   })
   const navigate = useNavigate()
 
@@ -25,31 +25,32 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
     try {
-      const dataResponse = await fetch(SummaryApi.Login.url, {
+      const response = await fetch(SummaryApi.Login.url, {
         method: SummaryApi.Login.method,
         headers: {
-          "content-type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
-  
-      const dataApi = await dataResponse.json();
-  
-      if (dataResponse.ok && dataApi.success) {
-        toast.success(dataApi.message);
-        navigate("/home");
-        console.log(dataApi.message)
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast.success(result.message);
+        navigate("/");
+        console.log(result.message);
       } else {
-        toast.error(dataApi.message || "Error al iniciar sesión. Por favor, inténtalo de nuevo.");
-        console.log(dataApi.message)
+        toast.error("Error al iniciar sesión. Por favor, inténtalo de nuevo.");
+        console.log(result.message);
       }
     } catch (error) {
-      toast.error("Error al conectarse al servidor.");
+      toast.error("Hubo un problema con el servidor.");
+      console.error("Error:", error);
     }
   };
-  
+
+  console.log("data login",data)
 
   return (
     <div className='grid grid-cols-2 h-screen'>

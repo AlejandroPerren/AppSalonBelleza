@@ -2,8 +2,10 @@ import React from 'react'
 import Date from '../components/Date'
 import Resumen from '../components/Resumen'
 import Header from '../components/subcomponents/Header'
+import NavBar from '../components/subcomponents/NavBar'
 
 const Home = () => {
+    
     return (
         <div className='grid grid-cols-2 h-screen'>
             <div className='flex item-center justify-center'>
@@ -13,11 +15,7 @@ const Home = () => {
             <div>
                 <Header></Header>
                 <main className='flex justify-center'>
-                    <div className='bg-blue-600 flex mx-4 justify-around text-center w-full my-16'>
-                        <button className='uppercase w-full p-4 hover:bg-white hover:text-blue-600'>Servicios</button>
-                        <button className='uppercase w-full p-4 hover:bg-white hover:text-blue-600'>Informacion Cita</button>
-                        <button className='uppercase w-full p-4 hover:bg-white hover:text-blue-600'>Resumen</button>
-                    </div>
+                  <NavBar/>
 
                     <div>
                      

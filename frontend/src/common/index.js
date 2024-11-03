@@ -9,6 +9,14 @@ const SummaryApi = {
     Register : {
         url : `${backenDomain}/register`,
         method : 'post'
+    },
+    Services : {
+        url : `${backenDomain}/services`,
+        method : 'get'
+    },
+    createServices : {
+        url : `${backenDomain}/createServices`,
+        method : 'post'
     }
 }
 

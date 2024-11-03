@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
 CREATE TABLE IF NOT EXISTS servicios (
   id int NOT NULL AUTO_INCREMENT,
   nombre varchar(60) DEFAULT NULL,
-  precio decimal(5,2) DEFAULT NULL,
+  precio int DEFAULT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 
 

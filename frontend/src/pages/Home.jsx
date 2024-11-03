@@ -1,29 +1,41 @@
-import React from 'react'
-import Date from '../components/Date'
-import Resumen from '../components/Resumen'
-import Header from '../components/subcomponents/Header'
-import NavBar from '../components/subcomponents/NavBar'
+import React, { useContext } from 'react';
+import Header from '../components/subcomponents/Header';
+import NavBar from '../components/subcomponents/NavBar';
+import Services from '../components/Services';
+import { GeneralContext } from '../context/generalContext'; 
 
 const Home = () => {
-    
+    const { activeSection } = useContext(GeneralContext);
+
+    const renderComponent = () => {
+        switch (activeSection) {
+            case 'citas':
+                return <h1>Hola</h1>;
+            case 'servicios':
+                return <Services />;
+            case 'resumen':
+                return <h1>Hola</h1>;
+            default:
+                return null;
+        }
+    };
+
     return (
         <div className='grid grid-cols-2 h-screen'>
-            <div className='flex item-center justify-center'>
-                <img src="../../public/1.jpg" className='w-full h-full object-cover'/>
+            <div className='flex items-center justify-center'>
+                <img src="../../public/1.jpg" className='w-full h-full object-cover' alt="Background" />
             </div>
-
             <div>
-                <Header></Header>
-                <main className='flex justify-center'>
-                  <NavBar/>
-
+                <Header />
+                <main className='flex justify-center flex-col text-center'>
+                    <NavBar />
                     <div>
-                     
+                        {renderComponent()}
                     </div>
                 </main>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;

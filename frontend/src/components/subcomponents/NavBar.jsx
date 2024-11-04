@@ -32,8 +32,8 @@ const NavBar = () => {
                         Servicios
                     </button>
                     <button
-                        className={`${buttonClass} ${activeSection === 'informacion' ? 'bg-white text-cyan-600' : 'hover:bg-white hover:text-cyan-600'}`}
-                        onClick={() => setActiveSection('informacion')}
+                        className={`${buttonClass} ${activeSection === 'citaInfo' ? 'bg-white text-cyan-600' : 'hover:bg-white hover:text-cyan-600'}`}
+                        onClick={() => setActiveSection('citaInfo')}
                     >
                         Información Cita
                     </button>

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { GeneralContext } from '../../context/generalContext';
+import AddServiceModal from './AddServiceModal';
 
 const Boton = () => {
     const { activeSection, setActiveSection, isAdmin } = useContext(GeneralContext);
@@ -8,17 +9,19 @@ const Boton = () => {
         <div className='flex justify-between w-full my-16'>
             {isAdmin ? (
                 <>
-                {activeSection === 'servicios' && (
-                        <div className='ml-auto'> 
+                    {activeSection === 'servicios' && (
+                        <>
+                            <AddServiceModal />
                             <button
                                 className='bg-cyan-600 px-10 py-6 m-4 font-bold hover:bg-white hover:text-cyan-600'
                                 onClick={() => setActiveSection('citas')}
                             >
                                 Siguiente &gt;&gt;
                             </button>
-                        </div>
+
+                        </>
                     )}
-                      {activeSection === 'citas' && (
+                    {activeSection === 'citas' && (
                         <button
                             className='bg-cyan-600 px-10 py-6 m-4 font-bold hover:bg-white hover:text-cyan-600'
                             onClick={() => setActiveSection('servicios')}
@@ -26,11 +29,11 @@ const Boton = () => {
                             &lt;&lt; Anterior
                         </button>
                     )}
-                    </>
+                </>
             ) : (
                 <>
                     {activeSection === 'servicios' && (
-                        <div className='ml-auto'> 
+                        <div className='ml-auto'>
                             <button
                                 className='bg-cyan-600 px-10 py-6 m-4 font-bold hover:bg-white hover:text-cyan-600'
                                 onClick={() => setActiveSection('citaInfo')}
@@ -39,7 +42,7 @@ const Boton = () => {
                             </button>
                         </div>
                     )}
-                   
+
                     {activeSection === 'citaInfo' && (
                         <>
                             <button

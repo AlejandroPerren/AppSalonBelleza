@@ -9,7 +9,7 @@ const NavBar = () => {
     return (
         <div>
             {isAdmin ? (
-                <div className='flex mx-4 justify-between my-16'>
+                <div >
                     <button
                         className={`${buttonClass} ${activeSection === 'citas' ? 'bg-white text-cyan-600' : 'bg-cyan-600 hover:bg-white hover:text-cyan-600'}`}
                         onClick={() => setActiveSection('citas')}

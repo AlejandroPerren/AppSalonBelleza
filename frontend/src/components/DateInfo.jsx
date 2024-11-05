@@ -27,7 +27,7 @@ const DateInfo = () => {
 
         <div>
        <form>
-        <div className='grid grid-cols-2 '>
+        <div className='grid grid-cols-customAuth '>
        <label className="self-center" htmlFor="nombre">Nombre</label>
             <input className='rounded-lg p-4 focus:outline-none  text-black'
               type="text"

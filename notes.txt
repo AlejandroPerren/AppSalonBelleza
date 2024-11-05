@@ -1,3 +1,5 @@
 - error servidor al registrarme✅
 - arreglar Toastify✅
 - en Servicios Crear un Array que se va a rellenar cuando Se seleccione un Servicio
+- Arreglar Citas en Admin que se pega al costado
+- Arreglar el Renderizado Teniendo en cuenta el admin

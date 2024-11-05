@@ -3,6 +3,8 @@ import Header from '../components/subcomponents/Header';
 import NavBar from '../components/subcomponents/NavBar';
 import Services from '../components/Services';
 import { GeneralContext } from '../context/generalContext'; 
+import DateInfo from '../components/DateInfo';
+import Boton from '../components/subcomponents/Boton';
 
 const Home = () => {
     const { activeSection } = useContext(GeneralContext);
@@ -11,6 +13,8 @@ const Home = () => {
         switch (activeSection) {
             case 'citas':
                 return <h1>Hola</h1>;
+                case 'citaInfo':
+                return <DateInfo/>;
             case 'servicios':
                 return <Services />;
             case 'resumen':
@@ -32,6 +36,10 @@ const Home = () => {
                     <div>
                         {renderComponent()}
                     </div>
+                    <div className='flex justify-between '>
+                    <Boton/>
+                    </div>
+                   
                 </main>
             </div>
         </div>

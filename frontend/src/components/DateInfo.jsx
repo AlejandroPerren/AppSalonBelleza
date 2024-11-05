@@ -21,13 +21,13 @@ const DateInfo = () => {
     })
   }
   return (
-    <section className='flex flex-col'>
+    <section className='flex flex-col pb-12'>
        <h2 className='mb-6 font-extrabold text-4xl'>Tus Datos y Cita</h2>
         <p>Coloca tus datos y fecha de tu cita</p>
 
         <div>
        <form>
-        <div className='grid grid-cols-customAuth '>
+        <div className='grid grid-cols-customAuth gap-4 '>
        <label className="self-center" htmlFor="nombre">Nombre</label>
             <input className='rounded-lg p-4 focus:outline-none  text-black'
               type="text"

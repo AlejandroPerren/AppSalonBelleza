@@ -4,6 +4,7 @@ import NavBar from '../components/subcomponents/NavBar';
 import Services from '../components/Services';
 import { GeneralContext } from '../context/generalContext'; 
 import DateInfo from '../components/DateInfo';
+import Boton from '../components/subcomponents/Boton';
 
 const Home = () => {
     const { activeSection } = useContext(GeneralContext);
@@ -35,6 +36,10 @@ const Home = () => {
                     <div>
                         {renderComponent()}
                     </div>
+                    <div className='flex justify-between '>
+                    <Boton/>
+                    </div>
+                   
                 </main>
             </div>
         </div>

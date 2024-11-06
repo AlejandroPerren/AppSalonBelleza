@@ -17,7 +17,18 @@ const SummaryApi = {
     createServices : {
         url : `${backenDomain}/createServices`,
         method : 'post'
-    }
+    },
+    deleteServices : {
+        url : `${backenDomain}/deleteService/`,
+        method : 'delete'
+    },
+    updateServices : {
+        url : `${backenDomain}/updateService/`,
+        method : 'patch'
+    },
+
+
+    
 }
 
 

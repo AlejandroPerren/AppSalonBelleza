@@ -19,11 +19,11 @@ const SummaryApi = {
         method : 'post'
     },
     deleteServices : {
-        url : `${backenDomain}/deleteService/`,
+        url : `${backenDomain}/deleteService`,
         method : 'delete'
     },
     updateServices : {
-        url : `${backenDomain}/updateService/`,
+        url : `${backenDomain}/updateService`,
         method : 'patch'
     },
 

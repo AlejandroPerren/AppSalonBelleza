@@ -4,38 +4,39 @@ import { toast } from 'react-toastify';
 import { GeneralContext } from '../context/generalContext';
 import { IoTrashBin } from "react-icons/io5";
 import { FaPencilAlt } from "react-icons/fa";
-import Modal from '../helpers/Modal'; // Asegúrate de importar el componente Modal
+import Modal from '../helpers/Modal'; 
 
 const Services = () => {
-  const [service, setServices] = useState([]);
+  const [services, setServices] = useState([]); 
   const { isAdmin } = useContext(GeneralContext);
-
-  // Estados para el modal de edición
   const [show, setShow] = useState(false);
   const [data, setData] = useState(null);
 
-  // Función para cerrar el modal
   const handleClose = () => setShow(false);
 
-  // Función para manejar el cambio de inputs en el modal
   const handleOnChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  // Función para manejar el envío del formulario de edición
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
+      if (!data || !data.id) {
+        toast.error("El ID del servicio es inválido");
+        return;
+      }
+  
       const response = await fetch(`${SummaryApi.updateServices.url}/${data.id}`, {
-        method: 'PUT',
+        method: SummaryApi.updateServices.method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
       const result = await response.json();
-
+  
       if (result.success) {
         toast.success('Servicio actualizado correctamente');
-        fetchServices(); // Actualiza la lista de servicios
-        handleClose(); // Cierra el modal
+        fetchServices();
+        handleClose();
       } else {
         toast.error(result.message);
       }
@@ -44,7 +45,6 @@ const Services = () => {
     }
   };
 
-  // Función para obtener los servicios
   const fetchServices = async () => {
     try {
       const fetchData = await fetch(SummaryApi.Services.url, {
@@ -62,29 +62,27 @@ const Services = () => {
     }
   };
 
-  // Función para eliminar un servicio
   const handleDelete = async (e, id) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${SummaryApi.Services.url}/${id}`, {
+      const response = await fetch(`${SummaryApi.deleteServices.url}/${id}`, {
         method: SummaryApi.deleteServices.method,
       });
 
       if (response.ok) {
-        toast.success('Producto eliminado correctamente');
+        toast.success('Servicio eliminado correctamente');
         fetchServices();
       } else {
-        toast.error('No se pudo eliminar el producto');
+        toast.error('No se pudo eliminar el servicio');
       }
     } catch (error) {
       toast.error('Ocurrió un error');
     }
   };
 
-  // Función para abrir el modal de edición con los datos del servicio seleccionado
   const handleEdit = (ser) => {
-    setData(ser);
-    setShow(true);
+    setData(ser);  
+    setShow(true); 
   };
 
   useEffect(() => {
@@ -99,7 +97,7 @@ const Services = () => {
       </div>
 
       <div className='grid grid-cols-2'>
-        {service.map((ser) => (
+        {services.map((ser) => (
           <div
             className="bg-white py-7 rounded-lg m-4 transition hover:-translate-y-1 hover:scale-105 duration-300"
             key={ser.id}
@@ -120,15 +118,14 @@ const Services = () => {
         ))}
       </div>
 
-      {/* Modal para edición */}
       {show && (
         <Modal
           show={show}
           handleClose={handleClose}
-          data={data}
+          data={data}  
           setData={setData}
-          handleSubmit={handleSubmit}
-          handleOnChange={handleOnChange}
+          handleSubmit={handleSubmit} 
+          handleOnChange={handleOnChange}  
           title="Editar Servicio"
         />
       )}

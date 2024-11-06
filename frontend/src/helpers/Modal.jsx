@@ -1,4 +1,3 @@
-// Modal.js
 import React from 'react';
 
 const Modal = ({ show, handleClose, data, setData, handleOnChange, handleSubmit, title }) => {

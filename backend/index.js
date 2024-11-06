@@ -6,10 +6,12 @@ const router = require('./routes/router');
 const app = express();
 
 const corsOptions = {
-  origin: 'http://localhost:5173'
+  origin: 'http://localhost:5173',
+  methods: ['GET', 'POST', 'PATCH', 'DELETE', 'PUT'],
+   allowedHeaders: ['Content-Type']
 };
 
-app.use(cors(corsOptions));
+app.use('*',cors(corsOptions));
 app.use(express.json()); 
 
 // Rutas

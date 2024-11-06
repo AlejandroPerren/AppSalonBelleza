@@ -16,6 +16,6 @@ router.post('/login', Login);
 router.get('/services', getServices)
 router.post('/createServices', createServices)
 router.delete('/deleteService/:id',deleteServices)
-router.patch('/updateService/:id', updateServices)
+router.put('/updateService/:id', updateServices)
 
 module.exports = router; 

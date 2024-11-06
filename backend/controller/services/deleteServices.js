@@ -6,8 +6,9 @@ const deleteServices = async (req, res) => {
             where: {id: req.params.id}
         })
         res.status(200).json({
-            message: "Servicio borrado correctamente"
+            message: "Servicio borrado correctamente",
         });
+        
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Error en el servidor", error });

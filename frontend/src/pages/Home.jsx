@@ -5,6 +5,7 @@ import Services from '../components/Services';
 import { GeneralContext } from '../context/generalContext'; 
 import DateInfo from '../components/DateInfo';
 import Boton from '../components/subcomponents/Boton';
+import AddServiceModal from '../components/subcomponents/AddServiceModal';
 
 const Home = () => {
     const { activeSection } = useContext(GeneralContext);
@@ -39,7 +40,7 @@ const Home = () => {
                     <div className='flex justify-between '>
                     <Boton/>
                     </div>
-                   
+                    
                 </main>
             </div>
         </div>

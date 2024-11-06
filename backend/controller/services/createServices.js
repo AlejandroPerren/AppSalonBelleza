@@ -1,6 +1,6 @@
 const services = require('../../models/servicesModel')
 
-
+//createServices
 const createServices = async(req, res)=>{
     try {
         const {nombre, precio } = req.body
@@ -19,8 +19,8 @@ const createServices = async(req, res)=>{
         })
         console.log(newService)
         res.status(200).json({
-            message : "Servicio Creado Con Exito"
-            
+        message : "Servicio Creado Con Exito",
+        success: true
         })
     }catch(error){
         console.error(error);

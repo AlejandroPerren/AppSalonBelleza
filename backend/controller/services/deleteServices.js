@@ -2,7 +2,7 @@ const services = require('../../models/servicesModel');
 
 const deleteServices = async (req, res) => {
     try {
-        await BlogModel.destroy({
+        await services.destroy({
             where: {id: req.params.id}
         })
         res.status(200).json({

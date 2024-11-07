@@ -22,12 +22,9 @@ const Register = async (req, res) => {
             password: hashedPassword,
         });
 
-        const token = jwt.sign({ id: newUser.id }, process.env.JWT_SECRET, { expiresIn: '4h' });
-        await newUser.update({ token });
-
         res.status(201).json({
             message: "Usuario Creado con Éxito",
-            token,
+            newUser,
         });
     } catch (error) {
         console.error(error);

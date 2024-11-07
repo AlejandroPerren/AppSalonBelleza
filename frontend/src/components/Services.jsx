@@ -3,47 +3,10 @@ import SummaryApi from '../common';
 import { toast } from 'react-toastify';
 import { GeneralContext } from '../context/generalContext';
 import { IoTrashBin } from "react-icons/io5";
-import { FaPencilAlt } from "react-icons/fa";
-import Modal from '../helpers/Modal'; 
 
 const Services = () => {
-  const [services, setServices] = useState([]); 
+  const [services, setServices] = useState([]);
   const { isAdmin } = useContext(GeneralContext);
-  const [show, setShow] = useState(false);
-  const [data, setData] = useState(null);
-
-  const handleClose = () => setShow(false);
-
-  const handleOnChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      if (!data || !data.id) {
-        toast.error("El ID del servicio es inválido");
-        return;
-      }
-  
-      const response = await fetch(`${SummaryApi.updateServices.url}/${data.id}`, {
-        method: SummaryApi.updateServices.method,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-      const result = await response.json();
-  
-      if (result.success) {
-        toast.success('Servicio actualizado correctamente');
-        fetchServices();
-        handleClose();
-      } else {
-        toast.error(result.message);
-      }
-    } catch (error) {
-      toast.error('Ocurrió un error al actualizar el servicio');
-    }
-  };
 
   const fetchServices = async () => {
     try {
@@ -80,11 +43,6 @@ const Services = () => {
     }
   };
 
-  const handleEdit = (ser) => {
-    setData(ser);  
-    setShow(true); 
-  };
-
   useEffect(() => {
     fetchServices();
   }, []);
@@ -109,26 +67,11 @@ const Services = () => {
                 <button onClick={(e) => handleDelete(e, ser.id)}>
                   <IoTrashBin className='text-cyan-600 text-3xl cursor-pointer transition hover:-translate-y-2 hover:scale-125' />
                 </button>
-                <button onClick={() => handleEdit(ser)}>
-                  <FaPencilAlt className='text-cyan-600 text-3xl cursor-pointer transition hover:-translate-y-2 hover:scale-125' />
-                </button>
               </div>
             )}
           </div>
         ))}
       </div>
-
-      {show && (
-        <Modal
-          show={show}
-          handleClose={handleClose}
-          data={data}  
-          setData={setData}
-          handleSubmit={handleSubmit} 
-          handleOnChange={handleOnChange}  
-          title="Editar Servicio"
-        />
-      )}
     </section>
   );
 };

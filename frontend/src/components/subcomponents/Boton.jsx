@@ -4,29 +4,6 @@ import AddService from './AddService';
 
 const Boton = () => {
     const { activeSection, setActiveSection, isAdmin } = useContext(GeneralContext);
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-          const response = await fetch(SummaryApi.createServices.url, {
-            method: SummaryApi.createServices.method,
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          });
-          const result = await response.json();
-          if (result.success) {
-            toast.success(result.message);
-            handleClose();
-          } else {
-            toast.error("Error al Crear el Producto, intente de nuevo por favor");
-            console.log(result.message);
-          }
-        } catch (error) {
-          toast.error("Hubo un problema con el servidor.");
-          console.error("Error:", error);
-        }
-      };
     return (
         <div className='flex justify-between w-full my-16'>
             {isAdmin ? (

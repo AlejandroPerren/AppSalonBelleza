@@ -21,13 +21,8 @@ const Register = async (req, res) => {
             email,
             password: hashedPassword,
         });
-
-        const token = jwt.sign({ id: newUser.id }, process.env.JWT_SECRET, { expiresIn: '4h' });
-        await newUser.update({ token });
-
         res.status(201).json({
-            message: "Usuario Creado con Éxito",
-            token,
+            message: "Usuario Creado con Éxito"
         });
     } catch (error) {
         console.error(error);

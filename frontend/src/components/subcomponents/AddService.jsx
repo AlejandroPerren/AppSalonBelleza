@@ -28,7 +28,7 @@ function AddService() {
       const response = await fetch(SummaryApi.createServices.url, {
         method: SummaryApi.createServices.method,
         headers: {
-          "Content-Type": "application/json",
+          "Csontent-Type": "application/json",
         },
         body: JSON.stringify(data),
       });

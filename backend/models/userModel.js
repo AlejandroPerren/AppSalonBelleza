@@ -35,6 +35,7 @@ telefono: {
 },
   admin: {
     type: DataTypes.BOOLEAN,
+    defaultValue: true,
     allowNull: true,
   },
   confirmado: {

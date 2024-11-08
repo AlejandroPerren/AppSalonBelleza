@@ -1,4 +1,3 @@
-// Login.js
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -28,19 +27,18 @@ const Login = () => {
         const result = await response.json();
 
         if (result.success) {
-            console.log("Login exitoso:", result);
-            localStorage.setItem('authToken', result.token);
-            setAuthData(result.userData);  // Actualizar datos de autenticación en el contexto
-
-            // Asegúrate de que `setAuthData` actualice antes de redirigir
-            setTimeout(() => {
-                navigate('/');
-                toast.success(result.message);
-            }, 100); // Delay para asegurar que el estado se actualice
-
-        } else {
-            toast.error('Error al iniciar sesión. Por favor, inténtalo de nuevo.');
-        }
+          console.log("Login exitoso:", result);
+          localStorage.setItem('authToken', result.token);
+          setAuthData(result.userData, result.token); 
+      
+    
+          setTimeout(() => {
+              navigate('/');
+              toast.success(result.message);
+          }, 1000); 
+      } else {
+          toast.error('Error al iniciar sesión. Por favor, inténtalo de nuevo.');
+      }
     } catch (error) {
         toast.error('Hubo un problema con el servidor.');
         console.error('Error:', error);

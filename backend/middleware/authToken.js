@@ -15,13 +15,11 @@ exports.authenticateToken = (req, res, next) => {
     if (err) {
       return res.status(403).json({ error: 'Token inválido o expirado' });
     }
-    //console.log(user); // Verifica el contenido del token
     req.user = user; 
     next(); 
   });
   
 };
-//Hashear Contraseña
 exports.hashPassword = async(password)=>{
   return password = await bcrypt.hash(password,10);
 }

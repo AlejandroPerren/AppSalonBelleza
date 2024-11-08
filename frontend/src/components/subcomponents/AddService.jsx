@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import SummaryApi from '../../common';
-import Modal from '../../helpers/Modal';
+import Modal from './Modal';
 import { toast } from 'react-toastify';
 
 function AddService() {

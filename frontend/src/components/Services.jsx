@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { GeneralContext } from '../context/generalContext';
 import { IoTrashBin } from "react-icons/io5";
 import { FaPencilAlt } from "react-icons/fa";
-import Modal from '../helpers/Modal'; 
+import Modal from './subcomponents/Modal'; 
 
 const Services = () => {
   const [services, setServices] = useState([]); 

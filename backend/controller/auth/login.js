@@ -1,3 +1,8 @@
+const Usuario = require('../../models/userModel');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const dotenv = require('dotenv').config()
+
 const Login = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -9,35 +14,25 @@ const Login = async (req, res) => {
 
         const checkPass = await bcrypt.compare(password, user.password);
         
-        if (checkPass) {
-            const tokenData = {
-                _id: user.id,
-                nombre: user.nombre,
-                rol: user.rol,
-            };
-
-            const token = jwt.sign(tokenData, process.env.TOKEN_SECRET_KEY, { expiresIn: '8h' });
-    
-            const tokenOption = {
-                httpOnly: true,
-                secure: true,
-            };
-    
-            res.cookie("token", token, tokenOption);
-            res.status(200).json({
-                message: "Login successfully",
-                data: token,
+        console.log('CheckPassword', checkPass);
+       
+        if(checkPass){
+            const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '4h' });
+            res.status(201).json({
                 success: true,
-                error: false
+                message: "Usuario ingresado con éxito",
+                token,
             });
-        } else {
+
+        }else{
             throw new Error("Usuario o contraseña incorrectos");
         }
        
     } catch (error) {
         console.error(error);
         res.status(500).json({ success: false, message: "Error en el servidor", error });
+
     }
 };
 
-module.exports = {Login}
+module.exports = { Login };

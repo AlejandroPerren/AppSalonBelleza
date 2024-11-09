@@ -4,14 +4,9 @@ import Login from '../pages/Login';
 import Register from '../pages/Register'
 import PrivateRoute from '../helpers/PrivateRoutes';
 const router = createBrowserRouter([
-  
   {
-    path: '/',
-    element: 
-    <PrivateRoute>
-    <Home />
-    </PrivateRoute>
-    ,
+    path: '/register',
+    element: <Register/>,
   },
   {
     path: '/login',
@@ -20,9 +15,15 @@ const router = createBrowserRouter([
     ,
   },
   {
-    path: '/register',
-    element: <Register/>,
+    path: '/',
+    element: 
+    <PrivateRoute>
+    <Home />
+    </PrivateRoute>
+    ,
   },
+
+
 ]);
 
 export default router;

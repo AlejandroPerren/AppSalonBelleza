@@ -7,7 +7,7 @@ import DateInfo from '../components/DateInfo';
 import Boton from '../components/subcomponents/Boton';
 
 import { useAuth } from '../context/AuthContext';
-import { Navigate } from 'react-router-dom'; // Importamos Navigate para redirigir
+import { Navigate } from 'react-router-dom'; 
 
 const Home = () => {
   const { activeSection } = useContext(GeneralContext);

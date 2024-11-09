@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <header className='items-end flex justify-between mx-8 my-2'>
       <h2 className=''>
-        Hola: {user ? user.name : 'Invitado'}
+        Hola: {user.nombre}
       </h2>
 
       <Link 

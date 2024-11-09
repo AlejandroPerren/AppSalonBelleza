@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import SummaryApi from '../common'
-import { useNavigate } from 'react-router-dom'
 
 const DateInfo = () => {
   const [data, setData] = useState({
@@ -8,7 +6,7 @@ const DateInfo = () => {
     fecha: "",
     hora: "",
   })
-  const navigate = useNavigate()
+ 
 
   const handleOnChange = (e) => {
     const { name, value } = e.target

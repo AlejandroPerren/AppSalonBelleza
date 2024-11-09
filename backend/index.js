@@ -3,14 +3,14 @@ const dotenv = require('dotenv').config();
 const cors = require('cors');
 const router = require('./routes/router');
 
+
 const app = express();
-
 const corsOptions = {
-  origin: 'http://localhost:5173'
+  origin: 'http://localhost:5173',
+  allowedHeaders: ['Content-Type', 'Authorization'], 
 };
-
 app.use(cors(corsOptions));
-app.use(express.json()); 
+app.use(express.json());
 
 // Rutas
 app.use('/', router);

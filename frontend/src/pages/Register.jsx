@@ -41,7 +41,7 @@ const Register = () => {
   
       if (dataApi.success) {
         toast.success(dataApi.message);
-        navigate("/");
+        navigate("/login");
       } else {
         toast.error(dataApi.message);
       }

@@ -1,17 +1,16 @@
 import React, { useContext } from 'react';
 import { GeneralContext } from '../../context/generalContext';
-import AddServiceModal from './AddServiceModal';
+import AddService from './AddService';
 
 const Boton = () => {
     const { activeSection, setActiveSection, isAdmin } = useContext(GeneralContext);
-
     return (
         <div className='flex justify-between w-full my-16'>
             {isAdmin ? (
                 <>
                     {activeSection === 'servicios' && (
                         <>
-                            <AddServiceModal />
+                            <AddService />
                             <button
                                 className='bg-cyan-600 px-10 py-6 m-4 font-bold hover:bg-white hover:text-cyan-600'
                                 onClick={() => setActiveSection('citas')}

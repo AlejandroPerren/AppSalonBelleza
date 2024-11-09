@@ -12,37 +12,30 @@ Usuario.init({
   nombre: {
     type: DataTypes.STRING(60),
     allowNull: false, 
-},
-apellido: {
-    type: DataTypes.STRING(60),
-    allowNull: false, 
-},
-email: {
-  type: DataTypes.STRING(30),
-  allowNull: false,
-  unique: true,
-  validate: {
-      isEmail: true, 
   },
-},
-password: {
+  apellido: {
     type: DataTypes.STRING(60),
     allowNull: false, 
-},
-telefono: {
+  },
+  email: {
+    type: DataTypes.STRING(30),
+    allowNull: false,
+    unique: true,
+    validate: {
+      isEmail: true, 
+    },
+  },
+  password: {
+    type: DataTypes.STRING(60),
+    allowNull: false, 
+  },
+  telefono: {
     type: DataTypes.STRING(10),
     allowNull: true,
-},
-  admin: {
-    type: DataTypes.BOOLEAN,
-    allowNull: true,
   },
-  confirmado: {
-    type: DataTypes.BOOLEAN,
-    allowNull: true,
-  },
-  token: {
-    type: DataTypes.STRING(200),
+  rol: {  
+    type: DataTypes.STRING(20),
+    defaultValue: 'usuario',
     allowNull: true,
   },
 }, {

@@ -1,17 +1,19 @@
 import React, { useContext } from 'react';
 import { GeneralContext } from '../context/generalContext';
 import { toast } from 'react-toastify';
+import SummaryApi from '../common';
 
 const Resumen = () => {
   const { selectedServices, appointmentData } = useContext(GeneralContext);
 
   const handleConfirm = async () => {
     try {
-      const response = await fetch('/api/submitAppointment', { 
-        method: 'POST',
+      const response = await fetch(SummaryApi.createDates.url, { 
+        method: SummaryApi.createDates.method,
         headers: {
           'Content-Type': 'application/json',
-        },
+          'Authorization': `Bearer ${authToken}`
+        }, 
         body: JSON.stringify({
           services: selectedServices,
           appointment: appointmentData

@@ -26,7 +26,14 @@ const SummaryApi = {
         url : `${backenDomain}/updateService`,
         method : 'put'
     },
-
+    getDates : {
+        url : `${backenDomain}/getDates`,
+        method : 'get'
+    },
+    createDates : {
+        url : `${backenDomain}/createDates`,
+        method : 'post'
+    },
 
     
 }

@@ -1,14 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import SummaryApi from '../common';
 import { toast } from 'react-toastify';
-import { GeneralContext } from '../context/generalContext';
 import { IoTrashBin } from "react-icons/io5";
 import { FaPencilAlt } from "react-icons/fa";
 import Modal from './subcomponents/Modal'; 
 import { useAuth } from '../context/AuthContext';
 const Services = () => {
   const [services, setServices] = useState([]); 
-  const { isAdmin } = useContext(GeneralContext);
+  const {isAdmin} = useAuth()
   const [show, setShow] = useState(false);
   const [data, setData] = useState(null);
   const { authToken } = useAuth();
@@ -28,10 +27,13 @@ const Services = () => {
   
       const response = await fetch(`${SummaryApi.updateServices.url}/${data.id}`, {
         method: SummaryApi.updateServices.method,
-        'Authorization': `Bearer ${authToken}`,
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`
+      },  
         body: JSON.stringify(data),
       });
+      
       const result = await response.json();
   
       if (result.success) {
@@ -50,7 +52,10 @@ const Services = () => {
     try {
       const fetchData = await fetch(SummaryApi.Services.url, {
         method: SummaryApi.Services.method,
-        'Authorization': `Bearer ${authToken}`,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`
+      },  
       });
       const dataResponse = await fetchData.json();
 
@@ -69,7 +74,10 @@ const Services = () => {
     try {
       const response = await fetch(`${SummaryApi.deleteServices.url}/${id}`, {
         method: SummaryApi.deleteServices.method,
-        'Authorization': `Bearer ${authToken}`,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`
+      },  
       });
 
       if (response.ok) {

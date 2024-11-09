@@ -1,40 +1,38 @@
 CREATE TABLE IF NOT EXISTS usuarios (
-  id int NOT NULL AUTO_INCREMENT,
-  nombre varchar(60) DEFAULT NULL,
-  apellido varchar(60) DEFAULT NULL,
-  email varchar(30) DEFAULT NULL,
-  password varchar(60) DEFAULT NULL,
-  telefono varchar(10) DEFAULT NULL,
-  admin tinyint(1) DEFAULT NULL,
-  confirmado tinyint(1) DEFAULT NULL,
-  token varchar(15) DEFAULT NULL,
+  id INT NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(60) DEFAULT NULL,
+  apellido VARCHAR(60) DEFAULT NULL,
+  email VARCHAR(30) NOT NULL UNIQUE,
+  password VARCHAR(60) NOT NULL,
+  telefono VARCHAR(10) DEFAULT NULL,
+  rol VARCHAR(20) DEFAULT 'usuario',  
   PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS servicios (
-  id int NOT NULL AUTO_INCREMENT,
-  nombre varchar(60) DEFAULT NULL,
-  precio int DEFAULT NULL,
+  id INT NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(60) DEFAULT NULL,
+  precio INT DEFAULT NULL,
   PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS citas (
-  id int NOT NULL AUTO_INCREMENT,
-  fecha date DEFAULT NULL,
-  hora time DEFAULT NULL,
-  usuarioId int DEFAULT NULL,
+  id INT NOT NULL AUTO_INCREMENT,
+  fecha DATE DEFAULT NULL,
+  hora TIME DEFAULT NULL,
+  usuarioId INT DEFAULT NULL,
   PRIMARY KEY (id),
   KEY citas_usuarios_idx (usuarioId),
   CONSTRAINT citas_usuarios FOREIGN KEY (usuarioId) REFERENCES usuarios (id) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS citasServicios (
-  id int NOT NULL AUTO_INCREMENT,
-  citaId int DEFAULT NULL,
-  servicioId int DEFAULT NULL,
+  id INT NOT NULL AUTO_INCREMENT,
+  citaId INT DEFAULT NULL,
+  servicioId INT DEFAULT NULL,
   PRIMARY KEY (id),
   KEY citaId_idx (citaId),
   KEY servicioId_idx (servicioId),
   CONSTRAINT citasServicios_ibfk_1 FOREIGN KEY (citaId) REFERENCES citas (id) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT citasServicios_ibfk_2 FOREIGN KEY (servicioId) REFERENCES servicios (id) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

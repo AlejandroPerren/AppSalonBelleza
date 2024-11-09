@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { GeneralContext } from '../../context/generalContext';
+import { useAuth } from '../../context/AuthContext';
 
 const NavBar = () => {
-    const { activeSection, setActiveSection, isAdmin } = useContext(GeneralContext);
- 
+    const { activeSection, setActiveSection } = useContext(GeneralContext);
+    const {isAdmin} = useAuth()
     const buttonClass = 'uppercase w-full p-4 transition-colors duration-300';
 
     return (

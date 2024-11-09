@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Modal = ({ show, handleClose, data, setData, handleOnChange, handleSubmit, title }) => {
+const Modal = ({ show, handleClose, data, handleOnChange, handleSubmit, title }) => {
   if (!show) return null;
 
   return (

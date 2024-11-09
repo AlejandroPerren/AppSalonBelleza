@@ -28,8 +28,9 @@ function AddService() {
       const response = await fetch(SummaryApi.createServices.url, {
         method: SummaryApi.createServices.method,
         headers: {
-          "Csontent-Type": "application/json",
-        },
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`
+      },  
         body: JSON.stringify(data),
       });
       const result = await response.json();

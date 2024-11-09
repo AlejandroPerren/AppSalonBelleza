@@ -5,3 +5,4 @@
 - en Servicios Crear un Array que se va a rellenar cuando Se seleccione un Servicio
 - Arreglar Citas en Admin que se pega al costado(toda la navbar tiene lo mismo)
 - actualizar servicio
+- Modificaciones que eviten la injeccion de codigo

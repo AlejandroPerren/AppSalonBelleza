@@ -28,7 +28,6 @@ const Login = () => {
 
         if (result.success) {
           console.log("Login exitoso:", result);
-          localStorage.setItem('authToken', result.token);
           setAuthData(result.userData, result.token); 
       
     

@@ -37,3 +37,12 @@ a {
 img {
     max-width: 100%;
 }
+.text-with-white-shadow {
+    color: #0bc0c8;
+    text-shadow: 
+        -2px -2px 0 #fff, 
+         2px -2px 0 #fff,
+        -2px  2px 0 #fff,
+         2px  2px 0 #fff;
+  }
+  

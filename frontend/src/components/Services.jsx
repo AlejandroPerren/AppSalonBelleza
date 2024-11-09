@@ -38,10 +38,11 @@ const Services = () => {
   
       if (result.success) {
         toast.success('Servicio actualizado correctamente');
-        fetchServices();
+        toast.success(result.message);
         handleClose();
+  
       } else {
-        toast.error(result.message);
+        toast.error(`Ocurrió un error: ${result.message}`); 
       }
     } catch (error) {
       toast.error('Ocurrió un error al actualizar el servicio');

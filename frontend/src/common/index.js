@@ -24,7 +24,7 @@ const SummaryApi = {
     },
     updateServices : {
         url : `${backenDomain}/updateService`,
-        method : 'patch'
+        method : 'put'
     },
 
 

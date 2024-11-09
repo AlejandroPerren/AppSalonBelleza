@@ -41,7 +41,7 @@ const Register = () => {
   
       if (dataApi.success) {
         toast.success(dataApi.message);
-        navigate("/login");
+        setTimeout(() => navigate("/login"), 1000); 
       } else {
         toast.error(dataApi.message);
       }

@@ -8,6 +8,8 @@ import Boton from '../components/subcomponents/Boton';
 
 import { useAuth } from '../context/AuthContext';
 import { Navigate } from 'react-router-dom'; 
+import Resumen from '../components/Resumen';
+import VerCitas from '../components/Dates';
 
 const Home = () => {
   const { activeSection } = useContext(GeneralContext);
@@ -20,13 +22,13 @@ const Home = () => {
   const renderComponent = () => {
     switch (activeSection) {
       case 'citas':
-        return <h1>Hola</h1>;
+        return <VerCitas/>;
       case 'citaInfo':
         return <DateInfo />;
       case 'servicios':
         return <Services />;
       case 'resumen':
-        return <h1>Hola</h1>;
+        return <Resumen></Resumen>;
       default:
         return null;
     }

@@ -9,7 +9,7 @@ function App() {
     
       <div>
         
-        <ToastContainer position="top-right" />
+        <ToastContainer position="top-center" />
         <RouterProvider router={router} />
       </div>
     );

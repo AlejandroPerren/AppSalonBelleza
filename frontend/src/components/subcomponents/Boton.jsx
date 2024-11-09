@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { GeneralContext } from '../../context/generalContext';
 import AddService from './AddService';
+import { useAuth } from '../../context/AuthContext';
 
 const Boton = () => {
-    const { activeSection, setActiveSection, isAdmin } = useContext(GeneralContext);
+    const { activeSection, setActiveSection } = useContext(GeneralContext);
+    const {isAdmin} = useAuth()
     return (
         <div className='flex justify-between w-full my-16'>
             {isAdmin ? (

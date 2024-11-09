@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import SummaryApi from '../../common';
-import Modal from './Modal';
+import Modal from '../subcomponents/Modal';
 import { toast } from 'react-toastify';
+import { useAuth } from '../../context/AuthContext';
 
 function AddService() {
   const [show, setShow] = useState(false);
-
+  const { authToken } = useAuth();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -37,6 +38,7 @@ function AddService() {
       if (result.success) {
         toast.success(result.message);
         handleClose();
+        window.location.reload();
       } else {
         toast.error("Error al Crear el Producto, intente de nuevo por favor");
         console.log(result.message);

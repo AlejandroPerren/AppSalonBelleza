@@ -5,13 +5,16 @@ import { IoTrashBin } from "react-icons/io5";
 import { FaPencilAlt } from "react-icons/fa";
 import Modal from './subcomponents/Modal'; 
 import { useAuth } from '../context/AuthContext';
+import { GeneralContext } from '../context/generalContext';
+
 const Services = () => {
   const [services, setServices] = useState([]); 
-  const {isAdmin} = useAuth()
+  const { isAdmin } = useAuth();
   const [show, setShow] = useState(false);
   const [data, setData] = useState(null);
   const { authToken } = useAuth();
   const handleClose = () => setShow(false);
+  const { selectedServices, updateSelectedServices } = useContext(GeneralContext);
 
   const handleOnChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -24,24 +27,25 @@ const Services = () => {
         toast.error("El ID del servicio es inválido");
         return;
       }
-  
+
       const response = await fetch(`${SummaryApi.updateServices.url}/${data.id}`, {
         method: SummaryApi.updateServices.method,
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${authToken}`
-      },  
+        },  
         body: JSON.stringify(data),
       });
       
       const result = await response.json();
-  
+
       if (result.success) {
         toast.success('Servicio actualizado correctamente');
-        fetchServices();
+        toast.success(result.message);
         handleClose();
+
       } else {
-        toast.error(result.message);
+        toast.error(`Ocurrió un error: ${result.message}`); 
       }
     } catch (error) {
       toast.error('Ocurrió un error al actualizar el servicio');
@@ -55,7 +59,7 @@ const Services = () => {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${authToken}`
-      },  
+        },  
       });
       const dataResponse = await fetchData.json();
 
@@ -77,7 +81,7 @@ const Services = () => {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${authToken}`
-      },  
+        },  
       });
 
       if (response.ok) {
@@ -110,18 +114,23 @@ const Services = () => {
       <div className='grid grid-cols-2'>
         {services.map((ser) => (
           <div
-            className="bg-white py-7 rounded-lg m-4 transition hover:-translate-y-1 hover:scale-105 duration-300"
+            onClick={() => updateSelectedServices(ser)} 
+            className={`py-7 rounded-lg m-4 transition-transform duration-300 ${
+              selectedServices.includes(ser) 
+                ? 'bg-cyan-600 text-white'  
+                : 'bg-white text-black'      
+            }`}
             key={ser.id}
           >
-            <h3 className='text-black mb-2 text-xl'>{ser.nombre}</h3>
-            <p className='text-cyan-600 font-bold text-4xl'>${ser.precio}</p>
+            <h3 className='mb-2 text-xl'>{ser.nombre}</h3>
+            <p className='font-bold text-4xl'>${ser.precio}</p>
             {isAdmin && (
               <div className="flex justify-evenly mt-4">
                 <button onClick={(e) => handleDelete(e, ser.id)}>
-                  <IoTrashBin className='text-cyan-600 text-3xl cursor-pointer transition hover:-translate-y-2 hover:scale-125' />
+                  <IoTrashBin className='text-3xl cursor-pointer transition-transform hover:scale-125' />
                 </button>
                 <button onClick={() => handleEdit(ser)}>
-                  <FaPencilAlt className='text-cyan-600 text-3xl cursor-pointer transition hover:-translate-y-2 hover:scale-125' />
+                  <FaPencilAlt className='text-3xl cursor-pointer transition-transform hover:scale-125' />
                 </button>
               </div>
             )}
